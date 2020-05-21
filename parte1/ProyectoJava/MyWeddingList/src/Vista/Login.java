@@ -1,174 +1,212 @@
-package Vista;
+package Controlador;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-import com.mysql.jdbc.PreparedStatement;
-
-import BBDD.conexion;
 import Beans.User;
+import Vista.Bienvenida;
+import Vista.Fondo;
+import Vista.ListaInvitados;
+import Vista.hash;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Window;
 
-public class Login extends conexion {
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 
-public boolean registrar(User usr) {
-    PreparedStatement ps = null;
-    Connection con = getConexion();
+public class LoginNovios extends JFrame {
 
-    String sql = "INSERT INTO usuarios (nombre, contraseña,correo) VALUES(?,?,?)";
+	private JPanel contentPane;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
+	private JTextField textField_1;
 
-    try {
-        ps = (PreparedStatement) con.prepareStatement(sql);
-        ps.setString(1, usr.getNombre());
-        ps.setString(2, usr.getContraseña());
-        ps.setString(3, usr.getCorreo());       
-        ps.execute();
-        return true;
-        
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e.toString());
-        return false;
-    } finally {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
-}
-
-public boolean login(User usr) {
-    java.sql.PreparedStatement ps = null;
-    ResultSet rs = null;
-    Connection con = getConexion();
-
-    String sql = "SELECT id, nombre, contraseña FROM usuarios WHERE nombre = ? LIMIT 1";
-
-    try {
-        ps = con.prepareStatement(sql);
-        ps.setString(1, usr.getNombre());
-        rs = ps.executeQuery();
-
-        if (rs.next()) {
-        	
-            if (usr.getContraseña().equals(rs.getString(3))) {
-                
-            	 String sqlUpdate = "UPDATE usuarios SET ultimaconexion = ? WHERE id = ?";
-
-            	ps= con.prepareStatement(sqlUpdate);
-            	ps.setString(1, usr.getUltimaconexion());
-            	ps.setInt(2, rs.getInt(1));
-            	ps.execute();
-            			
-            	usr.setId(rs.getInt(1));
-                usr.setNombre(rs.getString(2));
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        return false;
-        
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e.toString());
-        return false;
-        
-    } finally {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
-}
-
-
-public int existeUsuario(String nombre) {
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    Connection con = getConexion();
-
-    String sql = "SELECT count(id) FROM usuarios WHERE nombre = ?";
-
-    try {
-        ps = (PreparedStatement) con.prepareStatement(sql);
-        ps.setString(1, nombre);
-        rs = ps.executeQuery();
-
-        if (rs.next()) {
-            return rs.getInt(1);
-        }
-
-        return 1;
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e.toString());
-        return 1;
-    } finally {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
-}
-
-public boolean esEmail(String correo) {
-
-    // Patrón para validar el email
-    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
-    Matcher mather = pattern.matcher(correo);
-
-    return mather.find();
-
-}
-
-public boolean registrarInvitado(User usr) {
-    PreparedStatement ps = null;
-    Connection con = getConexion();
-
-    String sqlInvitado = "INSERT INTO invitado (nombre, autobus, dieta, tipo_invitado) VALUES(?, ?,?,?)";
-
-    try {
-        ps = (PreparedStatement) con.prepareStatement(sqlInvitado);
-        ps.setString(1, usr.getNombre());
-        ps.setString(2, usr.getAutobus());
-        ps.setString(3, usr.getDieta()); 
-        ps.setString(4, usr.getTipo_invitado());
-        ps.execute();
-        return true;
-        
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e.toString());
-        return false;
-    } finally {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
-}
-	public void PDFJava() {
-		
-		
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginNovios frame = new LoginNovios();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-	
-	public void deleteUser(String user) {
-		new Vista.Login().deleteUser(user);
-		
-	}
-	
 
+	/**
+	 * Create the frame.
+	 */
+	public LoginNovios() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new Fondo("imagen.jpg");
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblBienvenidoAlRegistro = new JLabel("BIENVENIDO AL REGISTRO DE PAREJAS");
+		lblBienvenidoAlRegistro.setBounds(58, 11, 331, 28);
+		lblBienvenidoAlRegistro.setFont(new Font("Arial Black", Font.PLAIN, 14));
+		lblBienvenidoAlRegistro.setForeground(new Color(25, 25, 112));
+		contentPane.add(lblBienvenidoAlRegistro);
+		
+		JButton btnRegresar = new JButton("REGRESAR");		
+		btnRegresar.setBounds(10, 46, 103, 23);		
+		btnRegresar.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		btnRegresar.setForeground(new Color(25, 25, 112));
+		contentPane.add(btnRegresar);
+		
+		JLabel lblNombreDeUsuario = new JLabel("NOMBRE  DE USUARIO");
+		lblNombreDeUsuario.setBounds(20, 80, 145, 14);
+		lblNombreDeUsuario.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		lblNombreDeUsuario.setForeground(new Color(25, 25, 112));
+		contentPane.add(lblNombreDeUsuario);
+		
+		textField = new JTextField();
+		textField.setBounds(173, 77, 200, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblContrasea = new JLabel("CONTRASE\u00D1A");
+		lblContrasea.setBounds(10, 157, 120, 14);
+		lblContrasea.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		lblContrasea.setForeground(new Color(25, 25, 112));
+		contentPane.add(lblContrasea);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(173, 154, 200, 19);
+		contentPane.add(passwordField);
+		
+		JButton btnCrear = new JButton("CREAR");		
+		btnCrear.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		btnCrear.setForeground(new Color(25, 25, 112));
+		btnCrear.setBounds(282, 227, 120, 23);
+		contentPane.add(btnCrear);
+		
+		JLabel lblConfirmarContrasea = new JLabel("CONFIRMAR CONTRASE\u00D1A");
+		lblConfirmarContrasea.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		lblConfirmarContrasea.setForeground(new Color(25, 25, 112));
+		lblConfirmarContrasea.setBounds(0, 199, 155, 14);
+		contentPane.add(lblConfirmarContrasea);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(173, 196, 200, 20);
+		contentPane.add(passwordField_1);
+		
+		JLabel lblEmil = new JLabel("EM@IL");
+		lblEmil.setForeground(new Color(25, 25, 112));
+		lblEmil.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		lblEmil.setBounds(46, 123, 70, 14);
+		contentPane.add(lblEmil);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(173, 120, 200, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnRecordar = new JButton("RECORDAR");
+		btnRecordar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String recuerda = textField.getText();
+				String recuerda2 = passwordField.getText();
+				
+				new Controlador.Login().EscribirRecordar(recuerda, recuerda2);;
+				
+			}
+		});
+		btnRecordar.setFont(new Font("Arial Black", Font.PLAIN, 10));
+		btnRecordar.setForeground(new Color(25, 25, 112));
+		btnRecordar.setBounds(142, 227, 109, 23);
+		contentPane.add(btnRecordar);
+		
+		
+		//ACCIONES
+		
+		btnCrear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 Login tbl = new Login();
+				User usr = new User();
+				
+				
+				
+				String pass = new String(passwordField.getPassword());
+				String passCon = new String(passwordField_1.getPassword());				
+				if (textField.getText().equals("") || textField_1.getText().equals("") || passCon.equals("") || pass.equals("")  ) {
+					JOptionPane.showMessageDialog(null, "Hay espacios vacios, debe rellenar todos los espacios");
+				} else {	
+					
+				if (pass.equals(passCon)) {
+					
+					if  (tbl.existeUsuario(getName()) == 0) {
+						
+						if (tbl.esEmail(textField_1.getText())) {
+							
+					String nuevoPass = hash.sha1(pass);					
+					usr.setNombre(textField.getText());
+					usr.setContraseÃ±a(nuevoPass);
+					usr.setCorreo(textField_1.getText());
+					usr.setIdinvitado(1);					
+					if (tbl.registrar(usr)) {					
+						JOptionPane.showMessageDialog(null, "Usuario Creado");
+						
+						limpiar();
+						
+						ListaInvitados atras1 = new ListaInvitados();
+						atras1.setVisible(true);
+						setVisible(false);
+					
+					} else {
+						
+						JOptionPane.showMessageDialog(null, "Error al guardar los datos");					
+					}
+					
+					} else {
+                        JOptionPane.showMessageDialog(null, "El email es invalido");
+                    }
+				} else {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+				}
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "Las contraseÃ±as no coinciden");				
+				}			
+			}			
+		}			
+			private void limpiar() {
+				textField.setText("");
+				passwordField.setText("");
+				passwordField_1.setText("");
+				textField_1.setText("");	
+			}
+		});
+		
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Bienvenida atras1 = new Bienvenida();
+				atras1.setVisible(true);
+				setVisible(false);
+			}
+		});
+	}
 }
+
