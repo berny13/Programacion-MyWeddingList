@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.javafx.image.impl.ByteIndexed.Getter;
 
 import Beans.User;
 
 import Controlador.LoginNovios;
 import Modelo.Principal;
+import javafx.scene.control.TextField;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -49,10 +53,10 @@ public class Bienvenida extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblBienvenido = new JLabel("BIENVENID@");
+		JLabel lblBienvenido = new JLabel("BIENVENIDO  " + Modelo.Principal.textField.getText());
 		lblBienvenido.setFont(new Font("Arial Black", Font.PLAIN, 14));
 		lblBienvenido.setForeground(new Color(25, 25, 112));
-		lblBienvenido.setBounds(137, 32, 184, 35);
+		lblBienvenido.setBounds(185, 27, 184, 35);
 		contentPane.add(lblBienvenido);
 		
 		JButton btnRegistrarse = new JButton("REGISTRARSE");		
@@ -87,7 +91,7 @@ public class Bienvenida extends JFrame {
 		
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Acces atras1 = new Acces();
+				Principal atras1 = new Principal();
 				atras1.setVisible(true);
 				setVisible(false);
 			}
