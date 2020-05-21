@@ -20,3 +20,11 @@
 * Herramientas usadas:
 
 * Bibliografía usada:
+
+## Clase control de invitados
+## Clase Bienvenida
+## Clase Acceso Usuario Registrado
+## Clase Registro de Usuarios
+## Clase Lista de invitados Añadir/Verlista
+## Clase Mis Invitados
+## Clase Añadir Invitado
