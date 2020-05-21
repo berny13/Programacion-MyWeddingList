@@ -7,16 +7,16 @@
 > Nombre del alumno: **[Berny Jimenez](https://www.linkedin.com/in/berny-jiménez-7027a7177)**
 
 ## Clase control de invitados
-![mockup](./parte1/imagenes/controlinvitados.jpg)
+![mockup](./blob/parte1/imagenes/controlinvitados.jpg)
 ## Clase Bienvenida
-![mockup](./parte1/imagenes/bienvenida.jpg)
+![mockup](./blob/parte1/imagenes/bienvenida.jpg)
 ## Clase Acceso Usuario Registrado
-![mockup](./parte1/imagenes/accesousuario1.jpg)
+![mockup](./blob/parte1/imagenes/accesousuario1.jpg)
 ## Clase Registro de Usuarios
-![mockup](./parte1/imagenes/accesousuario2.jpg)
+![mockup](./blob/parte1/imagenes/accesousuario2.jpg)
 ## Clase Lista de invitados Añadir/Verlista
-![mockup](./parte1/imagenes/listainvitados.jpg)
+![mockup](./blob/parte1/imagenes/listainvitados.jpg)
 ## Clase Mis Invitados
-![mockup](./parte1/imagenes/misinvitados.jpg)
+![mockup](./blob/parte1/imagenes/misinvitados.jpg)
 ## Clase Añadir Invitado
-![mockup](./parte1/imagenes/añadirinvitado.jpg)
+![mockup](./blob/parte1/imagenes/añadirinvitado.jpg)
