@@ -27,17 +27,17 @@ import Modelo.TablaInvitados;
 
 
 public class Login extends conexion {
-
+// este metodo añadira un nuevo usuario que no este registrado
 public boolean registrar(User usr) {
     PreparedStatement ps = null;
     Connection con = getConexion();
 
-    String sql = "INSERT INTO usuarios (nombre, contrase�a,correo) VALUES(?,?,?)";
+    String sql = "INSERT INTO usuarios (nombre, contraseña,correo) VALUES(?,?,?)";
 
     try {
         ps = (PreparedStatement) con.prepareStatement(sql);
         ps.setString(1, usr.getNombre());
-        ps.setString(2, usr.getContrase�a());
+        ps.setString(2, usr.getContraseña());
         ps.setString(3, usr.getCorreo());       
         ps.execute();
         return true;
@@ -53,13 +53,13 @@ public boolean registrar(User usr) {
         }
     }
 }
-
+// verificara que el usuario que intenta acceder este registrado y si lo esta accedera
 public boolean login(User usr) {
     java.sql.PreparedStatement ps = null;
     ResultSet rs = null;
     Connection con = getConexion();
 
-    String sql = "SELECT id, nombre, contrase�a FROM usuarios WHERE nombre = ? LIMIT 1";
+    String sql = "SELECT id, nombre, contraseña FROM usuarios WHERE nombre = ? LIMIT 1";
 
     try {
         ps = con.prepareStatement(sql);
@@ -68,7 +68,7 @@ public boolean login(User usr) {
 
         if (rs.next()) {
         	
-            if (usr.getContrase�a().equals(rs.getString(3))) {
+            if (usr.getContraseña().equals(rs.getString(3))) {
                 
             	 String sqlUpdate = "UPDATE usuarios SET ultimaconexion = ? WHERE id = ?";
 
@@ -100,7 +100,7 @@ public boolean login(User usr) {
     }
 }
 
-
+//este metodo verificara que el usuario exista
 public int existeUsuario(String nombre) {
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -133,7 +133,7 @@ public int existeUsuario(String nombre) {
 
 public boolean esEmail(String correo) {
 
-    // Patr�n para validar el email
+    // Patrón para validar el email
     Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
     Matcher mather = pattern.matcher(correo);
@@ -178,13 +178,14 @@ public boolean registrarInvitado(User usr) {
 		
 		
 	}
+	// este metodo añadira el fichero el cual leera el usuario
 	public static void recordar() {
 
 		try {
 
 		FileReader leerUser = new FileReader("C:/Users/34644/eclipse-workspace/MyWeddingList/src/nombre.txt");
 		
-		FileReader leerPasswd = new FileReader("C:/Users/34644/eclipse-workspace/MyWeddingList/src/contrase�a.txt");
+		FileReader leerPasswd = new FileReader("C:/Users/34644/eclipse-workspace/MyWeddingList/src/contraseña.txt");
 		
 		FileReader leernovio = new FileReader("C:/Users/34644/eclipse-workspace/MyWeddingList/src/LISTANOVIO.txt");
 		
@@ -200,7 +201,7 @@ public boolean registrarInvitado(User usr) {
 
 		}
 
-		public static void EscribirRecordar(String nombre, String contrase�a) {
+		public static void EscribirRecordar(String nombre, String contraseña) {
 
 
 		FileWriter escribirUser;
@@ -218,7 +219,7 @@ public boolean registrarInvitado(User usr) {
 		try {
 
 		escribirUser = new FileWriter("C:/Users/34644/eclipse-workspace/MyWeddingList/src/nombre.txt");
-		escribirPasswd = new FileWriter("C:/Users/34644/eclipse-workspace/MyWeddingList/src/contrase�a.txt");
+		escribirPasswd = new FileWriter("C:/Users/34644/eclipse-workspace/MyWeddingList/src/contraseña.txt");
 		
 		
 		buferUser = new BufferedWriter(escribirUser);
@@ -230,7 +231,7 @@ public boolean registrarInvitado(User usr) {
 
 		buferPasswd = new BufferedWriter(escribirPasswd);
 		printPasswd = new PrintWriter(escribirPasswd);
-		escribirPasswd.write(" "+contrase�a);
+		escribirPasswd.write(" "+contraseña);
 
 		escribirPasswd.close();
 		buferPasswd.close();
@@ -242,6 +243,7 @@ public boolean registrarInvitado(User usr) {
 		e1.printStackTrace();
 		}
 		}
+	//este metodo escribira en el fichero al usuario
 		public void EscribirRecordarNovio( String nombreinvitado) {
 			
 			FileWriter escribirleernovio;						
@@ -265,6 +267,7 @@ public boolean registrarInvitado(User usr) {
 			}
 			
 		}
+	// este metodo escribira en el fichero la informacion del usuario
 		
 public void EscribirRecordarNovia( String nombreinvitado) {
 			
