@@ -22,7 +22,7 @@ import com.mysql.jdbc.Connection;
 
 import BBDD.conexion;
 import Beans.User;
-import Vista.AñadirInvitado;
+import Vista.AÃ±adirInvitado;
 import Vista.Fondo;
 import Vista.ListaInvitados;
 import javafx.stage.FileChooser;
@@ -51,24 +51,6 @@ public class TablaInvitados extends JFrame {
 	private JPanel contentPane;
 	private static JTable table;
 
-	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TablaInvitados frame = new TablaInvitados();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public TablaInvitados() {
 		this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,7 +139,7 @@ public class TablaInvitados extends JFrame {
 	
 		
 		//ACCIONES
-		
+		// este metodo abrira a travez de un boton ver lista la base de datos y lo mostrara en una tabla
 		btnVerLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -204,7 +186,7 @@ public class TablaInvitados extends JFrame {
 	
 			}
 		});
-		
+		// este boton hara que a travez del metodo elimine un invitado seleccionado
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -216,10 +198,6 @@ public class TablaInvitados extends JFrame {
 				Connection conexion = con.getConexion();
 				
 				java.sql.Statement st;
-				
-				
-							
-			
 	
 						st = conexion.createStatement();
 						st.executeUpdate("DELETE FROM invitado WHERE idinvitado = "+ idInvitado);
@@ -251,7 +229,7 @@ public class TablaInvitados extends JFrame {
 			}
 		});
 		
-		
+		// este metodo permitira guardae la tabla en formato .pdf
 		btnPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JButton guardarPDF;
@@ -287,7 +265,7 @@ public class TablaInvitados extends JFrame {
 		
 		btnNueva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AñadirInvitado atras1 = new AñadirInvitado();
+				AÃ±adirInvitado atras1 = new AÃ±adirInvitado();
 				atras1.setVisible(true);
 				setVisible(false);
 			}
