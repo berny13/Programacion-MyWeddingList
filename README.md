@@ -9,5 +9,5 @@
 ## My Wedding List 
 > **Prototipo Back-End y Front-End**
 
-![mockup](./blob/completoparaentrega/Entrega/imagenes/arquitecturaweb.jpg)
+![mockup](./Entrega/imagenes/arquitecturaweb.jpg)
 
