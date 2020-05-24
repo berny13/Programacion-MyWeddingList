@@ -36,25 +36,6 @@ public class LoginNovios extends JFrame {
 	private JPasswordField passwordField_1;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginNovios frame = new LoginNovios();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public LoginNovios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -122,7 +103,7 @@ public class LoginNovios extends JFrame {
 		textField_1.setBounds(173, 120, 200, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
+		// este metodo hara que un usuario pueda ser recordado en caso de quererlo
 		JButton btnRecordar = new JButton("RECORDAR");
 		btnRecordar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -132,7 +113,7 @@ public class LoginNovios extends JFrame {
 				
 				
 				new Controlador.Login().EscribirRecordar(recuerda, recuerda2);
-				JOptionPane.showMessageDialog(null, "usuario y contrase�a guardados");
+				JOptionPane.showMessageDialog(null, "usuario y contraseña guardados");
 			}
 		});
 		btnRecordar.setFont(new Font("Arial Black", Font.PLAIN, 10));
@@ -149,7 +130,8 @@ public class LoginNovios extends JFrame {
 				User usr = new User();
 				
 				
-				
+				//este metodo verificara que las dos contraseñas sean iguales en caso de no serlo 
+				// y que el usuario debera rellenar todos los espacios vacios en caso de no haberlo hecho
 				String pass = new String(passwordField.getPassword());
 				String passCon = new String(passwordField_1.getPassword());				
 				if (textField.getText().equals("") || textField_1.getText().equals("") || passCon.equals("") || pass.equals("")  ) {
@@ -164,7 +146,7 @@ public class LoginNovios extends JFrame {
 							
 					String nuevoPass = hash.sha1(pass);					
 					usr.setNombre(textField.getText());
-					usr.setContrase�a(nuevoPass);
+					usr.setContraseña(nuevoPass);
 					usr.setCorreo(textField_1.getText());
 					usr.setIdinvitado(1);					
 					if (tbl.registrar(usr)) {					
@@ -189,7 +171,7 @@ public class LoginNovios extends JFrame {
 				}
 					
 				} else {
-					JOptionPane.showMessageDialog(null, "Las contrase�as no coinciden");				
+					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");				
 				}			
 			}			
 		}			
