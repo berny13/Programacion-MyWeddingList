@@ -26,25 +26,6 @@ public class ListaInvitados extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListaInvitados frame = new ListaInvitados();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ListaInvitados() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -87,7 +68,7 @@ public class ListaInvitados extends JFrame {
 		
 		
 		//ACCIONES
-		
+		//estos metodos al igual que los anteriores unicamente serviran para salto de ventana a tavez de JFrame
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					Principal atras = new Principal();
@@ -99,7 +80,7 @@ public class ListaInvitados extends JFrame {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AñadirInvitado Inv1 = new AñadirInvitado();
+				AÃ±adirInvitado Inv1 = new AÃ±adirInvitado();
 				Inv1.setVisible(true);
 				setVisible(false);
 			}
