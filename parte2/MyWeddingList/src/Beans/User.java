@@ -5,7 +5,7 @@ public class User {
 	private int id;
 	private int idinvitado;
 	private String nombre;
-	private String contraseña;
+	private String contraseÃ±a;
 	private String nombreinvitado;
 	private String autobus;
 	private String dieta;
@@ -13,15 +13,15 @@ public class User {
 	private String correo;
 	private String ultimaconexion;
 	
-	
+	// En esta clase crearemos las columnas como objetos para que sea mas facil su manipulacion y poder llamarlos desde otras clases
 	public User() {
 		
 	}
-	public User(int idinvitado, int id, String nombre, String contraseña,  String autobus, String dieta, String tipo_invitado, String correo, String nombreinvitado) {
+	public User(int idinvitado, int id, String nombre, String contraseÃ±a,  String autobus, String dieta, String tipo_invitado, String correo, String nombreinvitado) {
 		this.idinvitado = idinvitado;
 		this.id = id;
 		this.nombre = nombre;
-		this.contraseña = contraseña;
+		this.contraseÃ±a = contraseÃ±a;
 		this.autobus = autobus;
 		this.dieta = dieta;
 		this.tipo_invitado = tipo_invitado;
@@ -32,7 +32,7 @@ public class User {
 	
 	}
 		
-	
+	// generamos getters y setters para cada una de las columnas de la bbdd
 	public int getId() {
 		return id;
 	}
@@ -48,11 +48,11 @@ public class User {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getContraseÃ±a() {
+		return contraseÃ±a;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseÃ±a(String contraseÃ±a) {
+		this.contraseÃ±a = contraseÃ±a;
 	}
 	
 	public String getAutobus() {
