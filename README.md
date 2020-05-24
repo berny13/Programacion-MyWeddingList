@@ -8,6 +8,8 @@
 * y su forma visual para el usuario, al tratarse de mi primer proyecto he decidido incluir en la rama master de lo que seria este proyecto 
 * el cual seria de forma visual muy llamativo pero con un codigo un poco complejo al abrir diferentes ventanas e implementar JFrame 
 
+** en la rama mwlparte2** se encuentra el codigo comentado
+
 > Nombre de la aplicación: **MY Wedding List**
 
 > Nombre del alumno: **[Berny Jimenez](https://www.linkedin.com/in/berny-jiménez-7027a7177)**
