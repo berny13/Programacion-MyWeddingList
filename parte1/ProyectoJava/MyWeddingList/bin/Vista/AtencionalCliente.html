@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css"> <!-- permite añadir archivos de css y importarlos a la carpeta css -->
+	</head>
+	<body>
+		<div id="principal">
+			<header>
+				<div id="logo">
+					<h2 class="titulo">MY-WEDDING-LIST</h2>
+					<p class="sub-titulo">APLICACION</p>
+				</div>
+			</header>
+
+			<section id="slide">
+				<img src="imagen2.jpg" width="900" height="250">
+			</section>
+
+			<section id="categorias">
+				<section id="formulario">
+					<h2 class="titulo-contacto">Envíame un mensaje</h2> <!-- envio de formulario y datos a rellenar-->
+					<div id="form">
+						<form name="cotacto" method="POST" action="#">
+							<label for="nombre">Nombre:</label><br>
+							<input type="text" name="nombre" placeholder="Ingrese su nombre"><br>
+
+							<label for="correo">Email:</label><br>
+							<input type="text" name="correo" placeholder="Ingrese su email"><br>
+
+							<label for="asunto">Asunto:</label><br>
+							<input type="text" name="asunto" placeholder="Ingrese su asunto"><br>
+							<label for="nombre">Mensaje</label><br>
+							<textarea name="menaje" placeholder="Ingrese su mensaje"></textarea>
+							<br>
+							<hr>
+							<input type="submit" name="enviar" class="enviar">
+						</form>
+					</div>
+
+					<div id="datos"> <!--permite añadir formularios y la informacion de contacto de la pagina web -->
+							Teléfono Fijo: <strong>64-44-99-597</strong><br>
+							Teléfono Celular: <strong>64-44-99-597</strong><br>
+							E-Mail: <strong>berny.jimenez.web@adaits.es</strong><br>
+							Dirección: <strong>Sevilla, ADA ITS</strong><br>
+						</div>
+				</section>
+
+				<section id="mapa">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.184057918342!2d-5.930196185201759!3d37.409124240886065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c3c4d173efb%3A0xc6aacb7db2dd738!2sInstituto%20Tecnol%C3%B3gico%20Superior%20ADA!5e0!3m2!1ses!2ses!4v1576152178566!5m2!1ses!2ses" width="427" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> <!-- permite añadir enlaces de google maps y la unbicacion deseada-->
+				</section>
+				
+			</section> <!--/categorias-->
+			<hr>
+			<footer>
+
+				<p>
+					Copyright © BERNY JIMENEZ SANCHEZ - DAW 2019/2020 <br> <!-- permite personalizar la pagina dandole los derechos reservados-->
+					
+				</p>
+			</footer>			
+		</div>
+			<p> <a href="Main.java">volver</a></p> <!-- permite que se abra el fomulario desde le index o pagina principal-->
+	</body>
+</html>
