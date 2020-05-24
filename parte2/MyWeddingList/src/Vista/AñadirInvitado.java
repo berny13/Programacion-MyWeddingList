@@ -27,32 +27,13 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AñadirInvitado extends JFrame {
+public class AÃ±adirInvitado extends JFrame {
 
 	private JPanel contentPane;
 	public static JTextField textField;
 	public static Object comboBox_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AñadirInvitado frame = new AñadirInvitado();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public AñadirInvitado() {
+	public AÃ±adirInvitado() {
 		this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -159,7 +140,7 @@ public class AñadirInvitado extends JFrame {
 				Login tbl = new Login();
 				User usr = new User();
 				
-				
+				//Este metodo hara que se pueda aÃ±adir un invitado 
 				
 				String nomb = new String(textField.getText());
 				String autb = new String((String) comboBox.getSelectedItem());
@@ -186,7 +167,7 @@ public class AñadirInvitado extends JFrame {
 							
 			}			
 		}			
-			
+			//este metodo hara que una vez aÃ±adido el invitado se pueda limpiar los espacios rellenados para poder aÃ±adir uno nuevo
 			private void limpiar() {
 				textField.setText("");
 					
