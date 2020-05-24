@@ -118,7 +118,7 @@ public class Principal extends JFrame {
 		textField_1.setColumns(10);
 		
 		/*ACCIONES*/
-		
+		// este boton enviara a un documento html con un formulario de registro para informacion
 		btnTerminosYCondiciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String url = "C:\\Users\\34644\\eclipse-workspace\\MyWeddingList\\src\\Vista\\AtencionalCliente.html";
@@ -132,14 +132,14 @@ public class Principal extends JFrame {
 				}
 			}
 		});
-		
+		// este boton llamara al metodo fichero y lo guardara en un .txt
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Bienvenida atras3 = new Bienvenida();
 				atras3.setVisible(true);
 				setVisible(false);
 				
-				String recuerda3 = Vista.AñadirInvitado.textField.getText();
+				String recuerda3 = Vista.AÃ±adirInvitado.textField.getText();
 				new Controlador.Login().EscribirRecordarNovio(recuerda3);
 				
 		
@@ -152,7 +152,7 @@ public class Principal extends JFrame {
 				atras3.setVisible(true);
 				setVisible(false);
 	
-				String recuerda4 = Vista.AñadirInvitado.textField.getText();
+				String recuerda4 = Vista.AÃ±adirInvitado.textField.getText();
 				new Controlador.Login().EscribirRecordarNovia(recuerda4);
 					
 			}
