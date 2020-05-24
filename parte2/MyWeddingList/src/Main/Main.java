@@ -18,9 +18,9 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException{
 		/* Conecto con la base de datos */
+		//el Main sera el unico que pueda abrir las otras ventanas  y desde esta clase todas las otras clases del proyecto se abriran
 		
-		
-		/* Arranco la interfaz gr·fica */
+		/* Arranco la interfaz gr√°fica */
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
